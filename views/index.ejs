@@ -1,0 +1,22 @@
+<%- include("header") %>
+
+    <div class="box" id="heading">
+        <h1><%= listTitle %></h1>
+    </div>
+    <div class="box">
+        <%  list.forEach(function(task) { %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="deletedtask" value="<%= task._id %>" onchange="this.form.submit()">
+                    <p><%= task.name %></p>
+                </div>
+                <input type="hidden" name="listname" value="<%= listTitle %>"> <!-- User can't see this input, and we get the listTitle name -->
+            </form>
+        <% }) %>
+        <form class="item" action="/" method="post">
+            <input type="text" name="input" id="" placeholder="Enter an item" autocomplete="off">
+            <button type="submit" name="button" value="<%= listTitle %>">+</button>
+        </form>
+    </div>
+
+<%- include("footer") %>

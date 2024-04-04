@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const _ = require('lodash');
 const app = express();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -119,6 +120,6 @@ app.get("/about", (req,res)=> {
     res.render("about");
 })
 
-app.listen("3000", ()=> {
-    console.log("Server is running on port 3000")
+app.listen(port, ()=> {
+    console.log(`Server is running on port ${port}`)
 })
